@@ -39,3 +39,10 @@ docker compose -f compose/distributed.yaml up --build
 ```
 
 API diakses dari `http://localhost:8000` via nginx round-robin.
+
+---
+
+<p align="center">
+  <img src="https://res.cloudinary.com/yejaspj4/image/upload/v1788351719/ayo_makan_ss.png" style="width: 400px; height: 300px;">
+  <img src="https://res.cloudinary.com/yejaspj4/image/upload/v1788351719/aku_ss.png" style="width: 300px; height: 300px;">
+</p>
