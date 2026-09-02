@@ -1,8 +1,8 @@
 # IPBD Kelompok 1 - API Benchmarking
 
 <p align="center">
-  Prayuda Afifan Handoyo | L0224008 | Kelas A<br>
   Lois Ryannareta | L0224006 | Kelas A<br> 
+  Prayuda Afifan Handoyo | L0224008 | Kelas A<br>
   Rambat Ungu Aryati | L0224010 | Kelas A<br> 
   Desain Aplikasi Big Data
 </p>
