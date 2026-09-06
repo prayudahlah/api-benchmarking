@@ -1,12 +1,10 @@
 import os
+import aiofiles
 from pathlib import Path
-
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
-from starlette.concurrency import run_in_threadpool
 
 app = FastAPI()
-
 FILES_DIR = Path(os.getenv("FILES_DIR", "/app/files"))
 CHUNK_SIZE = 64 * 1024
 
@@ -19,15 +17,16 @@ async def health_check():
 @app.get("/files/{filename}")
 async def serve_file(filename: str):
     root = FILES_DIR.resolve()
+    filename = filename + ".bin"
     target = (root / filename).resolve()
 
     if not target.is_relative_to(root) or not target.is_file():
         raise HTTPException(status_code=404, detail="File not found")
 
     async def stream():
-        with open(target, "rb") as f:
+        async with aiofiles.open(target, "rb") as f:
             while True:
-                chunk = await run_in_threadpool(f.read, CHUNK_SIZE)
+                chunk = await f.read(CHUNK_SIZE)
                 if not chunk:
                     break
                 yield chunk

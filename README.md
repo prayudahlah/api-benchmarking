@@ -18,8 +18,12 @@ Benchmarking API performance dengan multiple instance dan load balancing.
 ├── compose/        # Docker Compose configs
 │   ├── compose.standalone.yaml   # Single instance
 │   └── compose.distributed.yaml  # 3 replicas + nginx Load Balancer
-└── proxy/
-    └── nginx.conf  # Nginx load balancer config
+├── proxy/
+│   └── nginx.conf  # Nginx load balancer config
+└── benchmark/      # Load testing (k6)
+    ├── files-test.js     # k6 test script
+    ├── run-benchmark.sh  # Runner script
+    └── results/          # JSON output
 ```
 
 ## Docker Compose

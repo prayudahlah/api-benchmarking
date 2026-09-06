@@ -1,16 +1,26 @@
 services:
-  api:
+  api-node:
     build:
       context: ../api
       dockerfile: Dockerfile
     deploy:
       replicas: 3
+    volumes:
+      - ../file_gen/generated_files:/app/files
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
 
   nginx:
     image: nginx:alpine
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - ../proxy/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - api
+      - api-node
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536

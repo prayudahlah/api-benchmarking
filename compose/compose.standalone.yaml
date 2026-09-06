@@ -1,8 +1,14 @@
 services:
-  api:
+  api-standalone:
     build:
       context: ../api
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    container_name: api
+    container_name: api-standalone
+    volumes:
+      - ../file_gen/generated_files:/app/files
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
